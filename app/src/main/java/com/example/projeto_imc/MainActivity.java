@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     Button btnCalcular;
-    TextView labelImc;
+    TextView labelImc, labelClassificacao;
     EditText edtPeso, edtAltura;
 
 
@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         edtPeso = findViewById(R.id.etdPeso);
         edtAltura = findViewById(R.id.edtAltura);
         btnCalcular = findViewById(R.id.btnCalcular);
+        labelClassificacao = findViewById(R.id.txtClassificacao);
     }
 
     public void calculaImc(View v) {
@@ -37,5 +38,9 @@ public class MainActivity extends AppCompatActivity {
         valorImc = valorPeso / Math.pow(valorAltura, 2);
 
         labelImc.setText(String.format("%.2f", valorImc));
+
+        if (valorImc < 18.5) {
+            labelClassificacao.setText("Magreza");
+        }
     }
 }
