@@ -39,8 +39,22 @@ public class MainActivity extends AppCompatActivity {
 
         labelImc.setText(String.format("%.2f", valorImc));
 
-        if (valorImc < 18.5) {
-            labelClassificacao.setText("Magreza");
+        if (valorImc > 0) {
+            if (valorImc < 18.5) {
+                labelClassificacao.setText("Magreza");
+            } else if (valorImc >= 18.5 && valorImc < 25) {
+                labelClassificacao.setText("Peso Normal");
+            } else if (valorImc >= 25.0 && valorImc < 30) {
+                labelClassificacao.setText("Sobrepeso");
+            } else if (valorImc >= 30 && valorImc < 35) {
+                labelClassificacao.setText("Obesidade de grau 1");
+            } else if (valorImc >= 35 && valorImc < 40) {
+                labelClassificacao.setText("Obesidade de grau 2");
+            } else {
+                labelClassificacao.setText("Obesidade de grau 3");
+            }
+        } else {
+            labelClassificacao.setText("Valores inválidos");
         }
     }
 }
